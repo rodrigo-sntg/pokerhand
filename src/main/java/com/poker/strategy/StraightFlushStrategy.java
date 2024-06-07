@@ -14,7 +14,7 @@ public class StraightFlushStrategy implements HandStrategy{
             return false;
         }
 
-        // Ordene as cartas
+
         cards.sort(Card::compareTo);
 
         if (!FlushHelper.isFlush(cards)) {

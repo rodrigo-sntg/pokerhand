@@ -13,10 +13,10 @@ public class RoyalStraightFlushStrategy implements HandStrategy{
             return false;
         }
 
-        // Ordene as cartas
+
         cards.sort(Card::compareTo);
 
-        // Verifique se as cartas são 10, J, Q, K, A
+
         int[] royalSequence = {10, 11, 12, 13, 14};
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i).value().getNumber() != royalSequence[i]) {
