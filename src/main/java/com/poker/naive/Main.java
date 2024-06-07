@@ -2,6 +2,7 @@ package com.poker.naive;
 
 
 import com.poker.enums.CardValue;
+import com.poker.enums.Suits;
 import com.poker.model.Card;
 
 import java.util.ArrayList;
@@ -14,17 +15,11 @@ public class Main {
     public static void main(String[] args) {
 
         List<Card> cards = new ArrayList<>();
-        Card card1 = new Card(CardValue.ACE, "clubs");
-        Card card2 = new Card(CardValue.ACE, "clubs");
-        Card card3 = new Card(CardValue.ACE, "clubs");
-        Card card4 = new Card(CardValue.ACE, "diamonds");
-        Card card5 = new Card(CardValue.ACE, "clubs");
-
-        cards.add(card1);
-        cards.add(card2);
-        cards.add(card3);
-        cards.add(card4);
-        cards.add(card5);
+        cards.add(new Card(CardValue.TWO, Suits.CLUB));
+        cards.add(new Card(CardValue.TWO, Suits.DIAMOND));
+        cards.add(new Card(CardValue.TWO, Suits.HEART));
+        cards.add(new Card(CardValue.TWO, Suits.SPADE));
+        cards.add(new Card(CardValue.THREE, Suits.CLUB));
 
         List<String> hands = listHand(cards);
         hands.forEach(System.out::println);
@@ -35,19 +30,17 @@ public class Main {
         List<String> listOfHands = new ArrayList<>();
         cards.sort(Card::compareTo);
         Map<String, Integer> suitCounterMap = new HashMap<>();
-        suitCounterMap.put("hearts", 0);
-        suitCounterMap.put("diamonds", 0);
-        suitCounterMap.put("spades", 0);
-        suitCounterMap.put("clubs", 0);
+        suitCounterMap.put(Suits.HEART.getSuit(), 0);
+        suitCounterMap.put(Suits.SPADE.getSuit(), 0);
+        suitCounterMap.put(Suits.CLUB.getSuit(), 0);
+        suitCounterMap.put(Suits.DIAMOND.getSuit(), 0);
         int sequenceCounter = 1;
 
         Map<Integer, Integer> numberCount = new HashMap<>();
 
-        
-
         Card card = cards.get(0);
         int lastNumber = card.value().getNumber();
-        suitCounterMap.put(card.suit(), suitCounterMap.get(card.suit()) + 1);
+        suitCounterMap.put(card.suit().getSuit(), suitCounterMap.get(card.suit().getSuit()) + 1);
         numberCount.put(card.value().getNumber(), numberCount.getOrDefault(card.value().getNumber() + 1, 1));
         boolean hasAce = card.value().getNumber() == 14;
 
@@ -79,7 +72,7 @@ public class Main {
 
             hasAce = hasAce ? hasAce : c.value().getNumber() == 14;
 
-            suitCounterMap.put(c.suit(), suitCounterMap.get(c.suit()) + 1);
+            suitCounterMap.put(c.suit().getSuit(), suitCounterMap.get(c.suit().getSuit()) + 1);
             numberCount.put(c.value().getNumber(), numberCount.getOrDefault(c.value().getNumber(), 0) + 1);
             if((lastNumber + 1) == c.value().getNumber()) {
                 sequenceCounter++;
@@ -97,9 +90,9 @@ public class Main {
     }
 
     public static String checkStraightAndFlush(int sequenceCounter, Map<String, Integer> suitCounterMap, Card card, boolean hasAce) {
-        if(sequenceCounter == 5 && suitCounterMap.get(card.suit()) == 5 && hasAce)
+        if(sequenceCounter == 5 && suitCounterMap.get(card.suit().getSuit()) == 5 && hasAce)
             return "royal straight flush";
-        else if(sequenceCounter == 5 && suitCounterMap.get(card.suit()) == 5)
+        else if(sequenceCounter == 5 && suitCounterMap.get(card.suit().getSuit()) == 5)
             return "straight flush";
         else if(sequenceCounter == 5){
             return "straight";
