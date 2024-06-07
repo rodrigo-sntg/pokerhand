@@ -4,6 +4,26 @@
 
 This project is a poker hand evaluator written in Java using Maven for dependency management and build. The evaluator determines the best poker hand from a given list of cards.
 
+## Poker Hand Rankings
+
+In this application, poker hands are evaluated based on traditional poker hand rankings. Here is a brief explanation of each hand ranking from highest to lowest:
+
+1. **Royal Flush**: A, K, Q, J, 10, all of the same suit. This is the highest possible hand in poker.
+2. **Straight Flush**: Five consecutive cards of the same suit. For example, 9, 8, 7, 6, 5 of hearts.
+3. **Four of a Kind**: Four cards of the same rank. For example, four 7s.
+4. **Full House**: Three cards of one rank and two cards of another rank. For example, three 8s and two 4s.
+5. **Flush**: Five cards of the same suit, not in sequence. For example, A, K, 5, 9, 2 of diamonds.
+6. **Straight**: Five consecutive cards of different suits. For example, 8, 7, 6, 5, 4 of mixed suits.
+7. **Three of a Kind**: Three cards of the same rank. For example, three 9s.
+8. **Two Pair**: Two cards of one rank and two cards of another rank. For example, two 5s and two 3s.
+9. **One Pair**: Two cards of the same rank. For example, two Jacks.
+10. **High Card**: If no one has any of the above hands, the highest card wins. For example, a hand with K, Q, 7, 5, 3 where the King is the highest card.
+
+### How the Evaluator Works
+
+The application evaluates the hand of poker cards provided to it and determines the best possible hand according to the rankings listed above. The hand evaluator uses a series of strategy patterns to identify the highest-ranking hand from the given cards.
+
+
 ## Project Structure
 
 The project follows the Maven standard structure:
