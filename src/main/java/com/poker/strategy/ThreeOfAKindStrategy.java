@@ -1,0 +1,24 @@
+package com.poker.strategy;
+
+import com.poker.enums.Hands;
+import com.poker.helpers.CountNumbersHelper;
+import com.poker.model.Card;
+
+import java.util.List;
+
+public class ThreeOfAKindStrategy implements HandStrategy{
+    @Override
+    public boolean isValid(List<Card> cards) {
+        return CountNumbersHelper.isThreeOfAKind(cards);
+    }
+
+    @Override
+    public String getHandName() {
+        return Hands.THREE_OF_A_KIND.getHand();
+    }
+
+    @Override
+    public int getPriority() {
+        return Hands.THREE_OF_A_KIND.getPriority();
+    }
+}
