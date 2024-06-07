@@ -91,8 +91,8 @@ The project follows the Maven standard structure:
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/your-username/poker-hand-evaluator.git
-    cd poker-hand-evaluator
+    git clone https://github.com/rodrigo-sntg/pokerhand.git
+    cd pokerhand
     ```
 
 2. **Build the project and run tests:**
